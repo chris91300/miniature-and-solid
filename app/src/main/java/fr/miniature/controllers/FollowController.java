@@ -1,40 +1,29 @@
 package fr.miniature.controllers;
 
 import java.io.IOException;
-
 import fr.miniature.models.User;
-import infrastructure.database.UserRepository;
 import infrastructure.errors.errorWithRedirection.ErrorWithRedirection;
 import infrastructure.errors.invalideData.InvalideData;
-import infrastructure.session.Session;
-import infrastructure.validator.DataValidator;
+import infrastructure.redirection.Redirection;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/follow")
-public class FollowController extends HttpServlet {
+public class FollowController extends GlobalController {
     
-    private UserRepository users = UserRepository.getInstance();
-    private Session session = Session.getInstance();
-    private DataValidator dataValidator = DataValidator.getInstance();
-
-
-
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void handlePost(HttpServletRequest req, HttpServletResponse resp, User userSession) throws ServletException, IOException {
         try{
-            session.setRequest(req).checkSession();
-            String authorID = req.getParameter("authorID");
+            //session.setRequest(req).checkSession();
             dataValidator.check(req, "authorID");
-            User userSession = session.getUserSession();            
+
+            String authorID = dataValidator.escapedForbiddenCharater(req.getParameter("authorID"));                 
             User author = users.findByID(authorID);
-            userSession.addAbonnement(author); 
-            
-            resp.sendRedirect("/feed");
-            return;
+            userSession.addAbonnement(author);
+
+            throw new Redirection("/feed");
 
         }catch(InvalideData error){
             req.setAttribute("error", error);

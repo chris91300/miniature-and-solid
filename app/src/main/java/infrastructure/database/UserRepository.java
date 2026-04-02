@@ -31,21 +31,18 @@ public class UserRepository implements UsersDBInterface {
     }
 
     public User findByID(String ID){
-        return users.getUserByID(ID);
-       // return (User) database.getEntityWithId(ID, EntityEnum.user);        
+        return users.getUserByID(ID);       
     }
 
     
     public ArrayList<User> find(){
         return users.find();
-        /*ArrayList<User> usersList;
-        usersList = database.getEntities(usersList);
-        return usersList; */
     }
 
    // public ArrayList<T> find(int limit);
     public void deleteByID(String ID){
-        // on surprime le user
+        users.delete(ID);
+        
     }
 
    

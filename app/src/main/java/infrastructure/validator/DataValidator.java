@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 public final class DataValidator {
     private static DataValidator instance;
-
+    private String regexForScriptInjection = "<";
 
     public static DataValidator getInstance(){
         if(instance == null){
@@ -29,7 +29,13 @@ public final class DataValidator {
                 }
                 
             }
+
         }
+        
+    }
+
+    public String escapedForbiddenCharater(String value){
+        return value.replaceAll(regexForScriptInjection, "");
         
     }
 }

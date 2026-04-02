@@ -58,4 +58,8 @@ public final class Users {
 
         return usersInstance;
     }
+
+    public void delete(String ID){
+        users.remove(ID);
+    }
 }

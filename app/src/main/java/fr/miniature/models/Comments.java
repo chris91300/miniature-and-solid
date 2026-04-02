@@ -18,7 +18,6 @@ public class Comments {
 
     public void addComment(Comment comment){
     comments.add(comment);
-    System.out.println("commentaire ajouté");
     }
 
     public Comment findByID(String ID){
@@ -42,8 +41,6 @@ public class Comments {
     public ArrayList<Comment> getCommmentsFor(String postID){
         ArrayList<Comment> list = new ArrayList<>();
         for(Comment comment: comments){
-            System.out.println(comment.getContent());
-            System.out.println(comment.getPostID());
             if(comment.getPostID().equals(postID)){
                 list.add(comment);
             }

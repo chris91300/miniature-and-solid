@@ -1,29 +1,23 @@
 package domain.models.publication;
 
 import java.util.Date;
-
 import domain.models.entities.EntityInterface;
+import domain.models.generator.GeneratorInterface;
+import infrastructure.generator.Generator;
 
 public abstract class Publication implements EntityInterface {
     private String id; 
     private String userID;
     private String content;
-    private long createdAt; 
+    private long createdAt;
+    private GeneratorInterface generator = Generator.getInstance();
 
     public Publication(String userID,String content){
         this.userID = userID;
         this.content = content;
-        this.id = generateID();
+        this.id = generator.generateRandomID();
         this.createdAt = new Date().getTime();
     }
-
-    
-
-    protected String generateID(){
-        int id = (int) (Math.random() * (1000000 - 1000 + 1) + 1000);
-        return Integer.toString(id);
-    }
-
 
 
     public String getID() {

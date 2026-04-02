@@ -13,7 +13,7 @@
 Error error = (Error) request.getAttribute("error");
 
 User user = (User) request.getAttribute("user");
-ArrayList<PostForClient> posts = (ArrayList<PostForClient>) request.getAttribute("posts");
+List<PostForClient> posts = (List<PostForClient>) request.getAttribute("posts");
 
 
 
