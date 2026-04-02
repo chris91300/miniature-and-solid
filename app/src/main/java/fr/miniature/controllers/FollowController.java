@@ -1,10 +1,11 @@
 package fr.miniature.controllers;
 
 import java.io.IOException;
-import fr.miniature.models.User;
-import infrastructure.errors.errorWithRedirection.ErrorWithRedirection;
-import infrastructure.errors.invalideData.InvalideData;
-import infrastructure.redirection.Redirection;
+
+import fr.miniature.infrastructure.errors.errorWithRedirection.ErrorWithRedirection;
+import fr.miniature.infrastructure.errors.invalideData.InvalideData;
+import fr.miniature.infrastructure.models.User;
+import fr.miniature.infrastructure.redirection.Redirection;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
