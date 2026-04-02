@@ -1,16 +1,16 @@
 package fr.miniature.controllers;
 
 import java.io.IOException;
-
-import domain.models.postForClient.PostForClient;
-
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.List;
-import fr.miniature.models.Post;
-import fr.miniature.models.User;
-import infrastructure.errors.invalideData.InvalideData;
-import infrastructure.facade.PostsFacade;
-import infrastructure.redirection.Redirection;
+
+import fr.miniature.domain.models.postForClient.PostForClient;
+import fr.miniature.infrastructure.errors.invalideData.InvalideData;
+import fr.miniature.infrastructure.facade.PostsFacade;
+import fr.miniature.infrastructure.models.Post;
+import fr.miniature.infrastructure.models.User;
+import fr.miniature.infrastructure.redirection.Redirection;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -52,9 +52,11 @@ public class FeedController extends GlobalController {
     }
 
     private void savePost(HttpServletRequest req, HttpServletResponse resp, User userSession) throws ServletException, IOException{
+        req.setCharacterEncoding(Charset.forName("UTF-8"));
         dataValidator.check(req, "newPost");
         
         String userID = userSession.getID();
+        //String postContent = req.getParameter("newPost");
         String postContent = dataValidator.escapedForbiddenCharater(req.getParameter("newPost"));
        
         Post newPost = new Post(userID, postContent);

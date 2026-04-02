@@ -2,10 +2,10 @@ package fr.miniature.controllers;
 
 import java.io.IOException;
 
-import fr.miniature.models.Comment;
-import fr.miniature.models.Post;
-import fr.miniature.models.User;
-import infrastructure.redirection.Redirection;
+import fr.miniature.infrastructure.models.Comment;
+import fr.miniature.infrastructure.models.Post;
+import fr.miniature.infrastructure.models.User;
+import fr.miniature.infrastructure.redirection.Redirection;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -35,7 +35,7 @@ public class CommentsController extends GlobalController {
     @Override
     protected void handlePost(HttpServletRequest req, HttpServletResponse resp, User userSession) throws ServletException, IOException {
        dataValidator.check(req, "postID", "commentContent");
-       
+
         String postID = dataValidator.escapedForbiddenCharater(req.getParameter("postID")); 
         String commentContent = dataValidator.escapedForbiddenCharater(req.getParameter("commentContent"));        
         Comment newComment = new Comment(userSession.getID(), commentContent, postID);

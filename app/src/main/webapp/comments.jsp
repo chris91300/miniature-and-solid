@@ -1,8 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.lang.Error" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="fr.miniature.models.User"%>
-<%@ page import="fr.miniature.models.Post"%>
+<%@ page import="fr.miniature.infrastructure.models.User"%>
+<%@ page import="fr.miniature.infrastructure.models.Post"%>
 <%@ page import="java.util.Map"%>
 
 <%

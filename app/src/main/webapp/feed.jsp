@@ -3,10 +3,10 @@
 <%@ page import="java.lang.System" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
-<%@ page import="fr.miniature.models.User"%>
-<%@ page import="fr.miniature.models.Post"%>
-<%@ page import="domain.models.postForClient.PostForClient"%>
-<%@ page import="domain.models.commentForClient.CommentClient"%>
+<%@ page import="fr.miniature.infrastructure.models.User"%>
+<%@ page import="fr.miniature.infrastructure.models.Post"%>
+<%@ page import="fr.miniature.domain.models.postForClient.PostForClient"%>
+<%@ page import="fr.miniature.domain.models.commentForClient.CommentClient"%>
 <%@ page import="java.util.Map"%>
 
 <%
@@ -21,9 +21,10 @@ List<PostForClient> posts = (List<PostForClient>) request.getAttribute("posts");
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/assets/style.css" />
     <title>Document</title>

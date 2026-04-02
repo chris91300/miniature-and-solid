@@ -3,16 +3,14 @@ package fr.miniature.controllers;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-
-import fr.miniature.models.User;
-import infrastructure.database.CommentRepository;
-import infrastructure.database.PostRepository;
-import infrastructure.database.UserRepository;
-import infrastructure.errors.errorWithRedirection.ErrorWithRedirection;
-import infrastructure.errors.invalideData.InvalideData;
-import infrastructure.session.Session;
-import infrastructure.validator.DataValidator;
+import fr.miniature.infrastructure.database.CommentRepository;
+import fr.miniature.infrastructure.database.PostRepository;
+import fr.miniature.infrastructure.database.UserRepository;
+import fr.miniature.infrastructure.errors.errorWithRedirection.ErrorWithRedirection;
+import fr.miniature.infrastructure.errors.invalideData.InvalideData;
+import fr.miniature.infrastructure.models.User;
+import fr.miniature.infrastructure.session.Session;
+import fr.miniature.infrastructure.validator.DataValidator;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -36,7 +34,6 @@ public class GlobalController extends HttpServlet {
             String path = req.getServletPath();
 
             if(needUserSessionForMethodGet.contains(path)){
-                System.out.println(path);
                 session.setRequest(req).checkSession();
                 User user = session.getUserSession();
                 handleGet(req, resp, user);
@@ -52,20 +49,17 @@ public class GlobalController extends HttpServlet {
     }
 
     protected void handleGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        
     }
 
     protected void handleGet(HttpServletRequest req, HttpServletResponse resp, User user) throws ServletException, IOException {
-
+       
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String path = req.getServletPath();
         try{
-            /*req.set
-            Map<String, String[]> map = req.getParameterMap();
-            map.forEach(arr -> arr.forEach(v -> S));*/
            if(needUserSessionForMethodPost.contains(path)){               
                 session.setRequest(req).checkSession();
                 User user = session.getUserSession();
@@ -91,10 +85,10 @@ public class GlobalController extends HttpServlet {
 
 
     protected void handlePost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        
     }
 
     protected void handlePost(HttpServletRequest req, HttpServletResponse resp, User user) throws ServletException, IOException {
-
+        
     }
 }

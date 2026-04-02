@@ -9,6 +9,9 @@ import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
+import org.apache.tomcat.util.descriptor.web.ErrorPage;
+
+import jakarta.servlet.http.HttpServletResponse;
 
 public class App {
 
@@ -32,7 +35,12 @@ public class App {
             classFolder.getAbsolutePath(),
             "/"
         ));
+        
         ctx.setResources(resources);
+        ErrorPage error404 = new ErrorPage();
+        error404.setLocation("/404.html");
+        error404.setErrorCode(HttpServletResponse.SC_NOT_FOUND);
+        ctx.addErrorPage(error404);
         try{
             tomcat.start();
         }catch(LifecycleException e){
